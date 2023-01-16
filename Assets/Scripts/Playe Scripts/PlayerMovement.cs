@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float mouseSpeed = 60f;
     private void Start() {
        Cursor.lockState = CursorLockMode.Locked; 
+       gameObject.transform.position = new Vector2(0,-15); 
     }
     void Update()
     {
         Vector2 mousePosition = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition); 
-        transform.Translate(Input.GetAxis("Mouse X")*mouseSpeed*Time.deltaTime,
-            Input.GetAxis("Mouse Y")*mouseSpeed*Time.deltaTime,0f); 
+        HandleMovement(100f);
+    }
+    private void HandleMovement(float speed){
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x,-50f,50f),
+            Mathf.Clamp(transform.position.y,-27f,28f));
+        transform.Translate(Input.GetAxis("Mouse X")*speed*Time.deltaTime,
+            Input.GetAxis("Mouse Y")*speed*Time.deltaTime,0f);
     }
 }
