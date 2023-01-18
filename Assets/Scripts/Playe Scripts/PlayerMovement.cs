@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private void Start() {
        Cursor.lockState = CursorLockMode.Locked; 
-       gameObject.transform.position = new Vector2(0,-15); 
+       transform.position = new Vector2(0,-15); 
     }
     void Update()
     {
