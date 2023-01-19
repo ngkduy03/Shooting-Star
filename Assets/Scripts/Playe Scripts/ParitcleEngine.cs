@@ -15,7 +15,9 @@ public class ParitcleEngine : MonoBehaviour
     }
     void Update()
     {
-        
+        HandleParticleEngineEmit();
+    }
+    void HandleParticleEngineEmit(){
         if(posX > transform.position.x){
             particleEngines[0].Emit(enginePower);
             posX = transform.position.x;
@@ -34,11 +36,6 @@ public class ParitcleEngine : MonoBehaviour
             particleEngines[5].Emit(enginePower);
             posY = transform.position.y;
         }
-
-        
-    }
-    void HandleParticleEngineEmit(){
-       
     }
     void EmitParticle(int index, int power){
         particleEngines[index].Emit(power);
