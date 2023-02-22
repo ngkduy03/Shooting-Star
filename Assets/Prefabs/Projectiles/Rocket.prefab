@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5415677804995237968}
   - component: {fileID: 5415677804995237975}
   - component: {fileID: 5415677804995237974}
-  - component: {fileID: 5415677804995237970}
   m_Layer: 6
   m_Name: Rocket
   m_TagString: Projectiles
@@ -134,19 +133,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5415677804995237970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5415677804995237973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d52627ade3e02448232d2f0040d682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnSound: {fileID: 8300000, guid: 4e4edf3d2672cea49a1bd25e549f9d28, type: 3}
-  destroySound: {fileID: 8300000, guid: cef28ad044b48624fbfeba734e9d6447, type: 3}
-  bombEffect: {fileID: 4660563033224423487, guid: 6d52b5f4fbd944726ba966534ac005ac, type: 3}
-  projectileType: 4

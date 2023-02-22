@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3203253264650568547}
   - component: {fileID: 3203253264650568546}
   - component: {fileID: 3203253264650568549}
-  - component: {fileID: 3203253264650568545}
   m_Layer: 6
   m_Name: Missile
   m_TagString: Projectiles
@@ -134,19 +133,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3203253264650568545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3203253264650568548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d52627ade3e02448232d2f0040d682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnSound: {fileID: 8300000, guid: 4e4edf3d2672cea49a1bd25e549f9d28, type: 3}
-  destroySound: {fileID: 8300000, guid: 46bcc371f599a62428eb964fb644457c, type: 3}
-  bombEffect: {fileID: 1516502056755872, guid: b32acdabb4f7b7342ad2dff9986cb44f, type: 3}
-  projectileType: 3

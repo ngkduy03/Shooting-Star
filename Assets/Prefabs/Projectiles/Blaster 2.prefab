@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1351985178450362336}
   - component: {fileID: 1351985178450362367}
   - component: {fileID: 1351985178450362366}
-  - component: {fileID: 1351985178450362338}
   m_Layer: 6
   m_Name: Blaster 2
   m_TagString: Projectiles
@@ -134,19 +133,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1351985178450362338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351985178450362365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d52627ade3e02448232d2f0040d682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnSound: {fileID: 8300000, guid: 3e8cc2776d3a7504187923a001952b42, type: 3}
-  destroySound: {fileID: 0}
-  bombEffect: {fileID: 0}
-  projectileType: 1

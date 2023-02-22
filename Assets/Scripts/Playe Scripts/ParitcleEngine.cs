@@ -22,7 +22,7 @@ public class ParitcleEngine : MonoBehaviour
             particleEngines[0].Emit(enginePower);
             posX = transform.position.x;
         }
-         if(posX < transform.position.x){
+        else if(posX < transform.position.x){
             particleEngines[1].Emit(enginePower);
             posX = transform.position.x;
         }
@@ -31,7 +31,7 @@ public class ParitcleEngine : MonoBehaviour
             particleEngines[3].Emit(enginePower);
             posY = transform.position.y;
         }
-        if(posY > transform.position.y){
+        else if(posY > transform.position.y){
             particleEngines[4].Emit(enginePower);
             particleEngines[5].Emit(enginePower);
             posY = transform.position.y;
