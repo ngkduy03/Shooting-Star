@@ -15,8 +15,8 @@ MonoBehaviour:
   type: Yellow Blaster
   speed: 35
   damage: 12
-  shootingTimeTreshold: 0.4
   spawnSound: {fileID: 8300000, guid: 3e8cc2776d3a7504187923a001952b42, type: 3}
   DestroySound: {fileID: 0}
   bombEffect: {fileID: 0}
   projectilePrefap: {fileID: 1351985178450362365, guid: 3103df97ae47db442a66726dd4b6ed64, type: 3}
+  shootingTimeTreshold: 0.5

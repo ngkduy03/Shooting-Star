@@ -15,8 +15,8 @@ MonoBehaviour:
   type: Red Blaster
   speed: 30
   damage: 7
-  shootingTimeTreshold: 0.4
   spawnSound: {fileID: 8300000, guid: fe96c61df3d839247847fb6341ff62fc, type: 3}
   DestroySound: {fileID: 0}
   bombEffect: {fileID: 0}
   projectilePrefap: {fileID: 772751017826051084, guid: f28ebd63028f1f24fa47ab60909aa824, type: 3}
+  shootingTimeTreshold: 0.3

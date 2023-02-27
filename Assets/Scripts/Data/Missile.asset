@@ -15,8 +15,8 @@ MonoBehaviour:
   type: Missile
   speed: 16
   damage: 20
-  shootingTimeTreshold: 0.6
   spawnSound: {fileID: 8300000, guid: 4e4edf3d2672cea49a1bd25e549f9d28, type: 3}
   DestroySound: {fileID: 8300000, guid: 46bcc371f599a62428eb964fb644457c, type: 3}
   bombEffect: {fileID: 1516502056755872, guid: b32acdabb4f7b7342ad2dff9986cb44f, type: 3}
   projectilePrefap: {fileID: 3203253264650568548, guid: 84fcc5508dd3bc74ca684477486e4c7e, type: 3}
+  shootingTimeTreshold: 0.5

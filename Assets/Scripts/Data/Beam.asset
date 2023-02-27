@@ -15,8 +15,8 @@ MonoBehaviour:
   type: 'Beam '
   speed: 45
   damage: 8
-  shootingTimeTreshold: 0.2
   spawnSound: {fileID: 8300000, guid: 796c313b38dce8d458061c022b9abddd, type: 3}
   DestroySound: {fileID: 0}
   bombEffect: {fileID: 0}
   projectilePrefap: {fileID: 6024936886616962652, guid: 0e06c57229e679742842b3adaa98df92, type: 3}
+  shootingTimeTreshold: 0.5

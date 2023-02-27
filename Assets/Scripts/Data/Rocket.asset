@@ -15,8 +15,8 @@ MonoBehaviour:
   type: Rocket
   speed: 30
   damage: 33
-  shootingTimeTreshold: 0.8
   spawnSound: {fileID: 8300000, guid: 4e4edf3d2672cea49a1bd25e549f9d28, type: 3}
   DestroySound: {fileID: 8300000, guid: cef28ad044b48624fbfeba734e9d6447, type: 3}
   bombEffect: {fileID: 4660563033224423487, guid: 6d52b5f4fbd944726ba966534ac005ac, type: 3}
   projectilePrefap: {fileID: 5415677804995237973, guid: dc4b408a8d9d4db45b3a708af88b629d, type: 3}
+  shootingTimeTreshold: 2
