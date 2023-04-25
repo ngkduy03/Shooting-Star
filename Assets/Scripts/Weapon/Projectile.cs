@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public ProjectilesData data;
+    private ProjectilesData data;
     private void Update()
     {
         transform.Translate(0f, data.speed * Time.deltaTime, 0f);

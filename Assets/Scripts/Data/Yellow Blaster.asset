@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e7cc416e8c1284899f7d0ef9ced896, type: 3}
+  m_Script: {fileID: 11500000, guid: a7bfc838d81387e4487bcb2b78fd95e5, type: 3}
   m_Name: Yellow Blaster
   m_EditorClassIdentifier: 
-  type: Yellow Blaster
-  speed: 35
-  damage: 12
-  spawnSound: {fileID: 8300000, guid: 3e8cc2776d3a7504187923a001952b42, type: 3}
-  DestroySound: {fileID: 0}
+  type: 
+  speed: 0
+  damage: 0
+  spawnSound: {fileID: 0}
+  destroySound: {fileID: 0}
   bombEffect: {fileID: 0}
-  projectilePrefap: {fileID: 1351985178450362365, guid: 3103df97ae47db442a66726dd4b6ed64, type: 3}
-  shootingTimeTreshold: 0.5
+  projectilePrefap: {fileID: 0}
+  shootingTimeTreshold: 0

@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e7cc416e8c1284899f7d0ef9ced896, type: 3}
+  m_Script: {fileID: 11500000, guid: a7bfc838d81387e4487bcb2b78fd95e5, type: 3}
   m_Name: Red Blaster
   m_EditorClassIdentifier: 
-  type: Red Blaster
-  speed: 30
-  damage: 7
-  spawnSound: {fileID: 8300000, guid: fe96c61df3d839247847fb6341ff62fc, type: 3}
-  DestroySound: {fileID: 0}
+  type: 
+  speed: 0
+  damage: 0
+  spawnSound: {fileID: 0}
+  destroySound: {fileID: 0}
   bombEffect: {fileID: 0}
-  projectilePrefap: {fileID: 772751017826051084, guid: f28ebd63028f1f24fa47ab60909aa824, type: 3}
-  shootingTimeTreshold: 0.3
+  projectilePrefap: {fileID: 0}
+  shootingTimeTreshold: 0

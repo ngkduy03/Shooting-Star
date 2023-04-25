@@ -9,7 +9,7 @@ public class ProjectilesData : ScriptableObject
     public float speed;
     public float damage;
     public AudioClip spawnSound;
-    public AudioClip DestroySound;
+    public AudioClip destroySound;
     public GameObject bombEffect;
     public GameObject projectilePrefap;
     public float shootingTimeTreshold;

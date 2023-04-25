@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7bfc838d81387e4487bcb2b78fd95e5, type: 3}
-  m_Name: Beam
+  m_Script: {fileID: 11500000, guid: 86e7cc416e8c1284899f7d0ef9ced896, type: 3}
+  m_Name: tmp_Beam
   m_EditorClassIdentifier: 
   type: 'Beam '
   speed: 45
   damage: 8
-  spawnSound: {fileID: 0}
-  destroySound: {fileID: 0}
+  spawnSound: {fileID: 8300000, guid: 796c313b38dce8d458061c022b9abddd, type: 3}
+  DestroySound: {fileID: 0}
   bombEffect: {fileID: 0}
-  projectilePrefap: {fileID: 0}
+  projectilePrefap: {fileID: 6024936886616962652, guid: 0e06c57229e679742842b3adaa98df92, type: 3}
   shootingTimeTreshold: 0.5
