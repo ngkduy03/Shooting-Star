@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5415677804995237968}
   - component: {fileID: 5415677804995237975}
   - component: {fileID: 5415677804995237974}
-  - component: {fileID: 3479355781170681339}
+  - component: {fileID: -1235439629743694303}
   m_Layer: 6
   m_Name: Rocket
   m_TagString: Projectiles
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3479355781170681339
+--- !u!114 &-1235439629743694303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5415677804995237973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d52627ade3e02448232d2f0040d682, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b486624e60ddd1429e3ac4e24654af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 286392e6ed7b16c4f8e431750695feec, type: 2}
+  data: {fileID: 11400000, guid: 6c0b6d84b73b3904fb21f0d39a299425, type: 2}

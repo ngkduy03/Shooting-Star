@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        Vector2 mousePosition = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition); 
+        Vector2 mousePosition = (Vector3)Camera.main.ScreenToWorldPoint(Input.mousePosition); 
         HandleMovement(99f);
     }
     private void HandleMovement(float speed){

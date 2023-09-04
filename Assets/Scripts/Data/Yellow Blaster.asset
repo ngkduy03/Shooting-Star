@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bfc838d81387e4487bcb2b78fd95e5, type: 3}
   m_Name: Yellow Blaster
   m_EditorClassIdentifier: 
-  type: 
-  speed: 0
-  damage: 0
-  spawnSound: {fileID: 0}
-  destroySound: {fileID: 0}
-  bombEffect: {fileID: 0}
-  projectilePrefap: {fileID: 0}
-  shootingTimeTreshold: 0
+  nameTag: Yellow Blaster
+  speed: 35
+  minDamage: 5
+  maxDamage: 10
+  shootingTimeTreshold: 0.5
+  spawnSound: {fileID: 8300000, guid: 3e8cc2776d3a7504187923a001952b42, type: 3}

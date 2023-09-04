@@ -5,12 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New ScriptableObjects", menuName = "ScriptableObjects/Projectiles")]
 public class ProjectilesData : ScriptableObject
 {
-    public string type;
+    public string nameTag;
     public float speed;
-    public float damage;
-    public AudioClip spawnSound;
-    public AudioClip destroySound;
-    public GameObject bombEffect;
-    public GameObject projectilePrefap;
+    public float minDamage;
+    public float maxDamage;
     public float shootingTimeTreshold;
+    public AudioClip spawnSound;
 }

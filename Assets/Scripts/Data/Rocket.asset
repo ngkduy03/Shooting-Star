@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112aec4c01db0e44cb11f2493d62c8d1, type: 3}
   m_Name: Rocket
   m_EditorClassIdentifier: 
-  type: 
-  speed: 0
-  damage: 0
-  spawnSound: {fileID: 0}
-  destroySound: {fileID: 0}
-  bombEffect: {fileID: 0}
-  projectilePrefap: {fileID: 0}
-  shootingTimeTreshold: 0
-  _bombEffect: {fileID: 0}
+  nameTag: Rocket
+  speed: 30
+  minDamage: 30
+  maxDamage: 35
+  shootingTimeTreshold: 2
+  spawnSound: {fileID: 8300000, guid: 4e4edf3d2672cea49a1bd25e549f9d28, type: 3}
+  destroySound: {fileID: 8300000, guid: cef28ad044b48624fbfeba734e9d6447, type: 3}
+  bombEffect: {fileID: 4660563033224423487, guid: 6d52b5f4fbd944726ba966534ac005ac, type: 3}

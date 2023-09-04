@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bfc838d81387e4487bcb2b78fd95e5, type: 3}
   m_Name: Beam
   m_EditorClassIdentifier: 
-  type: 'Beam '
+  nameTag: Beam
   speed: 45
-  damage: 8
-  spawnSound: {fileID: 0}
-  destroySound: {fileID: 0}
-  bombEffect: {fileID: 0}
-  projectilePrefap: {fileID: 0}
+  minDamage: 8
+  maxDamage: 10
   shootingTimeTreshold: 0.5
+  spawnSound: {fileID: 8300000, guid: 796c313b38dce8d458061c022b9abddd, type: 3}

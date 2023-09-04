@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6024936886616962641}
   - component: {fileID: 6024936886616962642}
   - component: {fileID: 6024936886616962643}
-  - component: {fileID: 3630992396991413613}
+  - component: {fileID: 6386739987597687038}
   m_Layer: 6
   m_Name: Beam
   m_TagString: Projectiles
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3630992396991413613
+--- !u!114 &6386739987597687038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6024936886616962652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d52627ade3e02448232d2f0040d682, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ccac39e0eb5f6a4c8b6b7885b522a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: a4e5aa9fc7efdc947b78e2f26491e11b, type: 2}
+  data: {fileID: 11400000, guid: 9bed368287a01eb42a48de2776368960, type: 2}

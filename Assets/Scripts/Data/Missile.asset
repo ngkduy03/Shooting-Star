@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112aec4c01db0e44cb11f2493d62c8d1, type: 3}
   m_Name: Missile
   m_EditorClassIdentifier: 
-  type: 
-  speed: 0
-  damage: 0
-  spawnSound: {fileID: 0}
-  destroySound: {fileID: 0}
-  bombEffect: {fileID: 0}
-  projectilePrefap: {fileID: 0}
-  shootingTimeTreshold: 0
-  _bombEffect: {fileID: 0}
+  nameTag: Missile
+  speed: 16
+  minDamage: 20
+  maxDamage: 25
+  shootingTimeTreshold: 0.5
+  spawnSound: {fileID: 8300000, guid: 4e4edf3d2672cea49a1bd25e549f9d28, type: 3}
+  destroySound: {fileID: 8300000, guid: 46bcc371f599a62428eb964fb644457c, type: 3}
+  bombEffect: {fileID: 1516502056755872, guid: b32acdabb4f7b7342ad2dff9986cb44f, type: 3}

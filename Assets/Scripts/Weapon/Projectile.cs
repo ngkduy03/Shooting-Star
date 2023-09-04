@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private ProjectilesData data;
-    private void Update()
+    protected void ProjectileMovement(ProjectilesData data)
     {
         transform.Translate(0f, data.speed * Time.deltaTime, 0f);
+    }
 
+    protected void CalculatDamage(ProjectilesData data)
+    {
+        Random.Range(data.minDamage, data.maxDamage);
     }
 }
