@@ -6,6 +6,7 @@ public class ParitcleEngine : MonoBehaviour
 {
     private float posX;
     private float posY;
+    
     [SerializeField]
     private ParticleSystem[] particleEngines;
     private int enginePower = 5;
