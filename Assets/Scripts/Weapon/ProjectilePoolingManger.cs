@@ -12,17 +12,19 @@ public class ProjectilePoolingManger : MonoBehaviour
 
     [SerializeField]
     private Transform bulletStorage;
-    
+
     [SerializeField]
     private Transform rocketStorage;
+
+    private int countNum = 0;
 
 #if UNITY_EDITOR
     [ContextMenu("CreatePool")]
     private void CreateBulletsPool()
     {
         Bullets.Clear();
-        
-        while(bulletStorage.childCount != 0)
+
+        while (bulletStorage.childCount != 0)
         {
             DestroyImmediate(bulletStorage.GetChild(0).gameObject);
         }
@@ -32,12 +34,11 @@ public class ProjectilePoolingManger : MonoBehaviour
             var bulletObj = Instantiate(bullet);
             bulletObj.transform.SetParent(bulletStorage);
             bulletObj.gameObject.SetActive(false);
-            Bullets.Add(bullet);
+            Bullets.Add(bulletObj);
         }
 
         UnityEditor.EditorUtility.SetDirty(this);
     }
-
 #endif
 
     private int LoadBullet(int count)
@@ -46,9 +47,11 @@ public class ProjectilePoolingManger : MonoBehaviour
         return nthBullet;
     }
 
-    private void ShootBullet()
+    public void ShootBullet(Vector3 spawnPosition)
     {
-
+        Bullets[LoadBullet(countNum)].transform.position = spawnPosition;
+        Bullets[LoadBullet(countNum)].gameObject.SetActive(true);
+        Bullets[LoadBullet(countNum)].DespawnBullet().Forget();
+        countNum++;
     }
-    
 }

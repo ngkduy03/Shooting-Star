@@ -9,8 +9,8 @@ public class Projectile : MonoBehaviour
         transform.Translate(0f, data.speed * Time.deltaTime, 0f);
     }
 
-    protected void CalculatDamage(ProjectilesData data)
+    protected float CalculatDamage(ProjectilesData data)
     {
-        Random.Range(data.minDamage, data.maxDamage);
+        return Random.Range(data.minDamage, data.maxDamage);
     }
 }

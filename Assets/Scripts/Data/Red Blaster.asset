@@ -16,5 +16,5 @@ MonoBehaviour:
   speed: 30
   minDamage: 10
   maxDamage: 15
-  shootingTimeTreshold: 0.3
+  shootingTimeTreshold: 0.4
   spawnSound: {fileID: 8300000, guid: fe96c61df3d839247847fb6341ff62fc, type: 3}

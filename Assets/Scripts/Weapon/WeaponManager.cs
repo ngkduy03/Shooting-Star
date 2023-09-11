@@ -11,7 +11,9 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     private Rocket rocket;
 
-    private float shootTimer;
+    [SerializeField]
+    ProjectilePoolingManger projectilePoolingManger;
+    private float shootBulletTimer;
     private float shootRocketTimer;
     private bool canShoot;
     private bool canShootRocket;
@@ -19,7 +21,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Awake()
     {
-        shootTimer = 0f;
+        shootBulletTimer = 0f;
         shootRocketTimer = 0f;
         canShoot = true;
         canShootRocket = true;
@@ -32,16 +34,16 @@ public class WeaponManager : MonoBehaviour
         HandlePlayerShooting();
     }
 
-    void HandlePlayerShooting()
+    private void HandlePlayerShooting()
     {
 
         if (canShoot && Input.GetMouseButton(0))
         {
-            Instantiate(bullet, projectileSpawn[0].position, Quaternion.identity);
-            Instantiate(bullet, projectileSpawn[1].position, Quaternion.identity);
+            projectilePoolingManger.ShootBullet(projectileSpawn[0].position);
+            projectilePoolingManger.ShootBullet(projectileSpawn[1].position);
             audioSource.PlayOneShot(bullet.Data.spawnSound);
             canShoot = false;
-            shootTimer = Time.time + bullet.Data.shootingTimeTreshold;
+            shootBulletTimer = Time.time + bullet.Data.shootingTimeTreshold;
         }
 
         if (canShootRocket && Input.GetMouseButton(1))
@@ -53,9 +55,9 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    void UpdateCanShoot()
+    private void UpdateCanShoot()
     {
-        if (shootTimer < Time.time)
+        if (shootBulletTimer < Time.time)
         {
             canShoot = true;
         }

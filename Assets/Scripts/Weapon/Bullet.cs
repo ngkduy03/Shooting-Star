@@ -10,12 +10,13 @@ public class Bullet : Projectile
     public BulletData Data { get; private set; }
 
     [SerializeField]
-    private float LivingTime = 3f;
+    private float LivingTime = 2f;
+
+    private float avgDamage;
 
     private void Start()
     {
-        CalculatDamage(Data);
-        DespawnBullet().Forget();
+        avgDamage = CalculatDamage(Data);
     }
 
     private void Update()
@@ -23,16 +24,9 @@ public class Bullet : Projectile
         ProjectileMovement(Data);
     }
 
-    private async UniTaskVoid DespawnBullet()
+    public async UniTaskVoid DespawnBullet()
     {
         await UniTask.WaitForSeconds(LivingTime);
         gameObject.SetActive(false);
     }
-
-    private void SpawnBullet(Vector3 spawnpoint, GameObject bullet)
-    {
-        bullet.SetActive(true);
-        bullet.transform.position = spawnpoint;
-    }
-
 }
