@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Rocket : Projectile
 {
-    [SerializeField]
-    private RocketData data;
-    public RocketData Data => data;
+    [field: SerializeField]
+    public RocketData Data { get; private set; }
+
+    private float avgRocketDamage;
 
     private void Start()
     {
-        CalculatDamage(Data);
+        avgRocketDamage = CalculatDamage(Data);
     }
 
     private void Update()

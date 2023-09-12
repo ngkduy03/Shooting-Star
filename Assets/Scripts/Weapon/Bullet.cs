@@ -9,14 +9,11 @@ public class Bullet : Projectile
     [field: SerializeField]
     public BulletData Data { get; private set; }
 
-    [SerializeField]
-    private float LivingTime = 2f;
-
-    private float avgDamage;
+    private float avgBulletDamage;
 
     private void Start()
     {
-        avgDamage = CalculatDamage(Data);
+        avgBulletDamage  = CalculatDamage(Data);
     }
 
     private void Update()
@@ -24,9 +21,4 @@ public class Bullet : Projectile
         ProjectileMovement(Data);
     }
 
-    public async UniTaskVoid DespawnBullet()
-    {
-        await UniTask.WaitForSeconds(LivingTime);
-        gameObject.SetActive(false);
-    }
 }

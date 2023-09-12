@@ -36,7 +36,6 @@ public class WeaponManager : MonoBehaviour
 
     private void HandlePlayerShooting()
     {
-
         if (canShoot && Input.GetMouseButton(0))
         {
             projectilePoolingManger.ShootBullet(projectileSpawn[0].position);
@@ -48,7 +47,7 @@ public class WeaponManager : MonoBehaviour
 
         if (canShootRocket && Input.GetMouseButton(1))
         {
-            Instantiate(rocket, projectileSpawn[2].position, Quaternion.identity);
+            projectilePoolingManger.ShootRocket(projectileSpawn[2].position);
             audioSource.PlayOneShot(rocket.Data.spawnSound);
             canShootRocket = false;
             shootRocketTimer = Time.time + rocket.Data.shootingTimeTreshold;

@@ -8,7 +8,13 @@ public class ProjectilePoolingManger : MonoBehaviour
     private List<Bullet> Bullets = new();
 
     [SerializeField]
+    private List<Rocket> Rockets = new();
+
+    [SerializeField]
     private Bullet bullet;
+
+    [SerializeField]
+    private Rocket rocket;
 
     [SerializeField]
     private Transform bulletStorage;
@@ -16,11 +22,12 @@ public class ProjectilePoolingManger : MonoBehaviour
     [SerializeField]
     private Transform rocketStorage;
 
-    private int countNum = 0;
+    private int countBulletNum = 0;
+    private int countRocketNum = 0;
 
 #if UNITY_EDITOR
-    [ContextMenu("CreatePool")]
-    private void CreateBulletsPool()
+    [ContextMenu("CreateBulletPool")]
+    private void CreateBulletPool()
     {
         Bullets.Clear();
 
@@ -39,19 +46,54 @@ public class ProjectilePoolingManger : MonoBehaviour
 
         UnityEditor.EditorUtility.SetDirty(this);
     }
-#endif
 
-    private int LoadBullet(int count)
+    [ContextMenu("CreateRocketPool")]
+    private void CreateRocketPool()
     {
-        int nthBullet = count % bulletStorage.childCount;
-        return nthBullet;
+        Rockets.Clear();
+
+        while (rocketStorage.childCount != 0)
+        {
+            DestroyImmediate(rocketStorage.GetChild(0).gameObject);
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            var rocketObj = Instantiate(rocket);
+            rocketObj.transform.SetParent(rocketStorage);
+            rocketObj.gameObject.SetActive(false);
+            Rockets.Add(rocketObj);
+        }
+
+        UnityEditor.EditorUtility.SetDirty(this);
     }
+#endif
 
     public void ShootBullet(Vector3 spawnPosition)
     {
-        Bullets[LoadBullet(countNum)].transform.position = spawnPosition;
-        Bullets[LoadBullet(countNum)].gameObject.SetActive(true);
-        Bullets[LoadBullet(countNum)].DespawnBullet().Forget();
-        countNum++;
+        int LoadBullet(int count)
+        {
+            int nthBullet = count % bulletStorage.childCount;
+            return nthBullet;
+        }
+
+        Bullets[LoadBullet(countBulletNum)].transform.position = spawnPosition;
+        Bullets[LoadBullet(countBulletNum)].gameObject.SetActive(true);
+        Bullets[LoadBullet(countBulletNum)].DespawnBullet().Forget();
+        countBulletNum++;
+    }
+
+    public void ShootRocket(Vector3 spawnPosition)
+    {
+        int LoadRocket(int count)
+        {
+            int nthRocket = count % rocketStorage.childCount;
+            return nthRocket;
+        }
+
+        Rockets[LoadRocket(countRocketNum)].transform.position = spawnPosition;
+        Rockets[LoadRocket(countRocketNum)].gameObject.SetActive(true);
+        Rockets[LoadRocket(countRocketNum)].DespawnBullet().Forget();
+        countRocketNum++;
     }
 }
