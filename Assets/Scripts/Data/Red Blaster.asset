@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Red Blaster
   m_EditorClassIdentifier: 
   nameTag: Red Blaster
-  speed: 30
+  speed: 35
   minDamage: 10
   maxDamage: 15
-  shootingTimeTreshold: 0.4
+  shootingTimeTreshold: 0.3
   spawnSound: {fileID: 8300000, guid: fe96c61df3d839247847fb6341ff62fc, type: 3}
