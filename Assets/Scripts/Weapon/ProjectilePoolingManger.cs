@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 
 public class ProjectilePoolingManger : MonoBehaviour
 {
     [SerializeField]
     private List<Bullet> Bullets = new();
+    private Queue<Bullet> DeactiveBullets = new();
 
     [SerializeField]
     private List<Rocket> Rockets = new();
@@ -24,6 +28,7 @@ public class ProjectilePoolingManger : MonoBehaviour
 
     private int countBulletNum = 0;
     private int countRocketNum = 0;
+    private bool isBulletSpawnesd = false;
 
 #if UNITY_EDITOR
     [ContextMenu("CreateBulletPool")]
@@ -69,7 +74,7 @@ public class ProjectilePoolingManger : MonoBehaviour
     }
 #endif
 
-    public void ShootBullet(Vector3 spawnPosition)
+    public void ShootBullet(Transform spawnPoint)
     {
         int LoadBullet(int count)
         {
@@ -77,13 +82,55 @@ public class ProjectilePoolingManger : MonoBehaviour
             return nthBullet;
         }
 
-        Bullets[LoadBullet(countBulletNum)].transform.position = spawnPosition;
+        Bullets[LoadBullet(countBulletNum)].transform.position = spawnPoint.position;
         Bullets[LoadBullet(countBulletNum)].gameObject.SetActive(true);
-        Bullets[LoadBullet(countBulletNum)].DespawnBullet().Forget();
+        Bullets[LoadBullet(countBulletNum)].DespawnProjectile().Forget();
         countBulletNum++;
     }
 
-    public void ShootRocket(Vector3 spawnPosition)
+    public void ShootBulletV2(Transform spawnPoint)
+    {
+        // for (int i = 0; i < Bullets.Count; i++)
+        // {
+        //     if (!Bullets[i].gameObject.activeInHierarchy)
+        //     {
+        //         Bullets[i].transform.position = spawnPoint.position;
+        //         Bullets[i].gameObject.SetActive(true);
+        //         Bullets[i].DespawnBullet().Forget();
+        //         isBulletSpawnesd = true;
+        //         break;
+        //     }
+        //     else
+        //     {
+        //         isBulletSpawnesd = false;
+        //     }
+        // }
+
+        if(DeactiveBullets.Count > 0)
+        {
+            var bullet = DeactiveBullets.Peek();
+            bullet.transform.position = spawnPoint.position;
+            bullet.gameObject.SetActive(true);
+            bullet.DespawnProjectile().Forget();
+            DeactiveBullets.Dequeue();
+        }
+        else    
+        {
+            Bullet newBullet = Instantiate(bullet,spawnPoint.position,quaternion.identity);
+            newBullet.DespawnProjectile().Forget();
+            Bullets.Add(newBullet);
+            newBullet.transform.SetParent(bulletStorage);
+            LoadDeactiveBullet(newBullet).Forget();
+        }
+    }
+
+    private async UniTask LoadDeactiveBullet(Bullet bullet)
+    {
+        await UniTask.WaitUntil(() => bullet.IsDeactivated == true);
+        DeactiveBullets.Enqueue(bullet);
+    }
+
+    public void ShootRocket(Transform spawnPoint)
     {
         int LoadRocket(int count)
         {
@@ -91,9 +138,9 @@ public class ProjectilePoolingManger : MonoBehaviour
             return nthRocket;
         }
 
-        Rockets[LoadRocket(countRocketNum)].transform.position = spawnPosition;
+        Rockets[LoadRocket(countRocketNum)].transform.position = spawnPoint.position;
         Rockets[LoadRocket(countRocketNum)].gameObject.SetActive(true);
-        Rockets[LoadRocket(countRocketNum)].DespawnBullet().Forget();
+        Rockets[LoadRocket(countRocketNum)].DespawnProjectile().Forget();
         countRocketNum++;
     }
 }

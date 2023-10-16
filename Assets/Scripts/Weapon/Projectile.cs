@@ -5,7 +5,10 @@ using Cysharp.Threading.Tasks;
 
 public class Projectile : MonoBehaviour
 {
-    protected float LivingTime = 2f;
+    protected float livingTime = 2f;
+
+    public bool IsDeactivated;
+
     protected void ProjectileMovement(ProjectilesData data)
     {
         transform.Translate(0f, data.speed * Time.deltaTime, 0f);
@@ -15,9 +18,11 @@ public class Projectile : MonoBehaviour
     {
         return Random.Range(data.minDamage, data.maxDamage);
     }
-    public async UniTaskVoid DespawnBullet()
+
+    public async UniTaskVoid DespawnProjectile()
     {
-        await UniTask.WaitForSeconds(LivingTime);
+        await UniTask.WaitForSeconds(livingTime);
         gameObject.SetActive(false);
+        IsDeactivated = true;
     }
 }

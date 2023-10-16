@@ -38,8 +38,10 @@ public class WeaponManager : MonoBehaviour
     {
         if (canShoot && Input.GetMouseButton(0))
         {
-            projectilePoolingManger.ShootBullet(projectileSpawn[0].position);
-            projectilePoolingManger.ShootBullet(projectileSpawn[1].position);
+            // projectilePoolingManger.ShootBullet(projectileSpawn[0]);
+            // projectilePoolingManger.ShootBullet(projectileSpawn[1]);
+            projectilePoolingManger.ShootBulletV2(projectileSpawn[0]);
+            projectilePoolingManger.ShootBulletV2(projectileSpawn[1]);
             audioSource.PlayOneShot(bullet.Data.spawnSound);
             canShoot = false;
             shootBulletTimer = Time.time + bullet.Data.shootingTimeTreshold;
@@ -47,7 +49,7 @@ public class WeaponManager : MonoBehaviour
 
         if (canShootRocket && Input.GetMouseButton(1))
         {
-            projectilePoolingManger.ShootRocket(projectileSpawn[2].position);
+            projectilePoolingManger.ShootRocket(projectileSpawn[2]);
             audioSource.PlayOneShot(rocket.Data.spawnSound);
             canShootRocket = false;
             shootRocketTimer = Time.time + rocket.Data.shootingTimeTreshold;
