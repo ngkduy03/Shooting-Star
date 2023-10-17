@@ -38,10 +38,8 @@ public class WeaponManager : MonoBehaviour
     {
         if (canShoot && Input.GetMouseButton(0))
         {
-            // projectilePoolingManger.ShootBullet(projectileSpawn[0]);
-            // projectilePoolingManger.ShootBullet(projectileSpawn[1]);
-            projectilePoolingManger.ShootBulletV2(projectileSpawn[0]);
-            projectilePoolingManger.ShootBulletV2(projectileSpawn[1]);
+            projectilePoolingManger.ShootBullet(projectileSpawn[0]);
+            projectilePoolingManger.ShootBullet(projectileSpawn[1]);
             audioSource.PlayOneShot(bullet.Data.spawnSound);
             canShoot = false;
             shootBulletTimer = Time.time + bullet.Data.shootingTimeTreshold;

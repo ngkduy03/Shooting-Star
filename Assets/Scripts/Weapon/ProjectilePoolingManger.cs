@@ -7,15 +7,12 @@ using DG.Tweening;
 
 public class ProjectilePoolingManger : MonoBehaviour
 {
-    [SerializeField]
-    private List<Bullet> Bullets = new();
-    private Queue<Bullet> DeactiveBullets = new();
-
-    [SerializeField]
-    private List<Rocket> Rockets = new();
+    private Queue<Bullet> Bullets = new();
 
     [SerializeField]
     private Bullet bullet;
+
+    private Queue<Rocket> Rockets= new();
 
     [SerializeField]
     private Rocket rocket;
@@ -29,118 +26,67 @@ public class ProjectilePoolingManger : MonoBehaviour
     private int countBulletNum = 0;
     private int countRocketNum = 0;
     private bool isBulletSpawnesd = false;
-
-#if UNITY_EDITOR
-    [ContextMenu("CreateBulletPool")]
-    private void CreateBulletPool()
-    {
-        Bullets.Clear();
-
-        while (bulletStorage.childCount != 0)
-        {
-            DestroyImmediate(bulletStorage.GetChild(0).gameObject);
-        }
-
-        for (int i = 0; i < 20; i++)
-        {
-            var bulletObj = Instantiate(bullet);
-            bulletObj.transform.SetParent(bulletStorage);
-            bulletObj.gameObject.SetActive(false);
-            Bullets.Add(bulletObj);
-        }
-
-        UnityEditor.EditorUtility.SetDirty(this);
-    }
-
-    [ContextMenu("CreateRocketPool")]
-    private void CreateRocketPool()
-    {
-        Rockets.Clear();
-
-        while (rocketStorage.childCount != 0)
-        {
-            DestroyImmediate(rocketStorage.GetChild(0).gameObject);
-        }
-
-        for (int i = 0; i < 3; i++)
-        {
-            var rocketObj = Instantiate(rocket);
-            rocketObj.transform.SetParent(rocketStorage);
-            rocketObj.gameObject.SetActive(false);
-            Rockets.Add(rocketObj);
-        }
-
-        UnityEditor.EditorUtility.SetDirty(this);
-    }
-#endif
+    private bool isRocketSpawned = false;
 
     public void ShootBullet(Transform spawnPoint)
     {
-        int LoadBullet(int count)
+        if(Bullets.Count > 0)
         {
-            int nthBullet = count % bulletStorage.childCount;
-            return nthBullet;
-        }
-
-        Bullets[LoadBullet(countBulletNum)].transform.position = spawnPoint.position;
-        Bullets[LoadBullet(countBulletNum)].gameObject.SetActive(true);
-        Bullets[LoadBullet(countBulletNum)].DespawnProjectile().Forget();
-        countBulletNum++;
-    }
-
-    public void ShootBulletV2(Transform spawnPoint)
-    {
-        // for (int i = 0; i < Bullets.Count; i++)
-        // {
-        //     if (!Bullets[i].gameObject.activeInHierarchy)
-        //     {
-        //         Bullets[i].transform.position = spawnPoint.position;
-        //         Bullets[i].gameObject.SetActive(true);
-        //         Bullets[i].DespawnBullet().Forget();
-        //         isBulletSpawnesd = true;
-        //         break;
-        //     }
-        //     else
-        //     {
-        //         isBulletSpawnesd = false;
-        //     }
-        // }
-
-        if(DeactiveBullets.Count > 0)
-        {
-            var bullet = DeactiveBullets.Peek();
+            var bullet = Bullets.Peek();
             bullet.transform.position = spawnPoint.position;
             bullet.gameObject.SetActive(true);
             bullet.DespawnProjectile().Forget();
-            DeactiveBullets.Dequeue();
+            Bullets.Dequeue();
+            bullet.IsDeactivated = false;
+            LoadDeactiveProjectiles(bullet, Bullets).Forget();
+            isBulletSpawnesd = true;
         }
         else    
         {
+            isBulletSpawnesd = false;
+        }
+
+        if(!isBulletSpawnesd)
+        {
             Bullet newBullet = Instantiate(bullet,spawnPoint.position,quaternion.identity);
             newBullet.DespawnProjectile().Forget();
-            Bullets.Add(newBullet);
             newBullet.transform.SetParent(bulletStorage);
-            LoadDeactiveBullet(newBullet).Forget();
+            LoadDeactiveProjectiles(newBullet, Bullets).Forget();
+            newBullet.IsDeactivated = false;
         }
     }
-
-    private async UniTask LoadDeactiveBullet(Bullet bullet)
-    {
-        await UniTask.WaitUntil(() => bullet.IsDeactivated == true);
-        DeactiveBullets.Enqueue(bullet);
-    }
-
     public void ShootRocket(Transform spawnPoint)
     {
-        int LoadRocket(int count)
+        if(Rockets.Count > 0)
         {
-            int nthRocket = count % rocketStorage.childCount;
-            return nthRocket;
+            var rocket = Rockets.Peek();
+            rocket.transform.position = spawnPoint.position;
+            rocket.gameObject.SetActive(true);
+            rocket.DespawnProjectile().Forget();
+            Bullets.Dequeue();
+            rocket.IsDeactivated = false;
+            LoadDeactiveProjectiles(rocket, Rockets).Forget();
+            isRocketSpawned = true;
+        }
+        else    
+        {
+            isRocketSpawned = false;
         }
 
-        Rockets[LoadRocket(countRocketNum)].transform.position = spawnPoint.position;
-        Rockets[LoadRocket(countRocketNum)].gameObject.SetActive(true);
-        Rockets[LoadRocket(countRocketNum)].DespawnProjectile().Forget();
-        countRocketNum++;
+        if(!isRocketSpawned)
+        {
+            Rocket newRocket = Instantiate(rocket,spawnPoint.position,quaternion.identity);
+            newRocket.DespawnProjectile().Forget();
+            newRocket.transform.SetParent(rocketStorage);
+            LoadDeactiveProjectiles(newRocket,Rockets).Forget();
+            newRocket.IsDeactivated = false;
+        }
     }
+
+    private async UniTaskVoid LoadDeactiveProjectiles<T>(T projectile, Queue<T> DeactiveProjectiles) where T:Projectile
+    {
+        await UniTask.WaitUntil(() => projectile.IsDeactivated == true);
+        DeactiveProjectiles.Enqueue(projectile);
+    }
+
 }
